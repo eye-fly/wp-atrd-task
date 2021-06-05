@@ -18,28 +18,6 @@ import (
 	"github.com/gorilla/mux"
 )
 
-type specificHandler struct {
-	Thing string
-}
-
-func (h *specificHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte(h.Thing))
-}
-
-// func main() {
-// 	s := "Helloefdsghre world!"
-// 	http.Handle("/something", &specificHandler{Thing: s})
-// 	http.ListenAndServe(":8080", nil)
-// }
-
-// func main() {
-// 	log.Printf("Server started")
-
-// 	router := swagger.NewRouter()
-
-// 	log.Fatal(http.ListenAndServe(":8080", router))
-// }
-
 func main() {
 	var UploadedSecret = secrets.New()
 

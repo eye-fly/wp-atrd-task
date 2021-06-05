@@ -16,12 +16,10 @@ import (
 )
 
 type Secret struct {
-
-	// Unique hash to identify the secrets
-	Hash string `json:"hash"`
-
 	doesExpire bool
 	index      int
+	// Unique hash to identify the secrets
+	Hash string `json:"hash"`
 
 	// The secret itself
 	SecretText string `json:"secretText"`
@@ -36,7 +34,6 @@ type Secret struct {
 	RemainingViews int32 `json:"remainingViews"`
 }
 
-// A PriorityQueue implements heap.Interface and holds Items.
 type PriorityQueue []*Secret
 
 func (pq PriorityQueue) Len() int {
@@ -50,9 +47,7 @@ func BoolToInt(b bool) int {
 	}
 }
 func (pq PriorityQueue) Less(i, j int) bool {
-	// We want Pop to give us the highest, not lowest, priority so we use greater than here.
-	//return pq[i].priority > pq[j].priority
-
+	//last must be not expireing secrets no matter time they expire
 	if pq[i].doesExpire != pq[j].doesExpire {
 		return BoolToInt(pq[i].doesExpire) > BoolToInt(pq[j].doesExpire)
 	}

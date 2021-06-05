@@ -74,7 +74,6 @@ func GetSecretByHashfunc(UploadedSecret *secrets.AllSecrets) http.HandlerFunc {
 			r.RequestURI,
 			time.Since(start),
 		)
-
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 		defer r.Body.Close()
 
