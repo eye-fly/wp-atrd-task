@@ -47,7 +47,7 @@ func BoolToInt(b bool) int {
 	}
 }
 func (pq PriorityQueue) Less(i, j int) bool {
-	//last must be not expireing secrets no matter time they expire
+	//not expiring secrets must be last no matter var: ExpiresAt
 	if pq[i].doesExpire != pq[j].doesExpire {
 		return BoolToInt(pq[i].doesExpire) > BoolToInt(pq[j].doesExpire)
 	}
